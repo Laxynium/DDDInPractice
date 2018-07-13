@@ -1,4 +1,5 @@
 ﻿using System;
+using DDDInPractice.Logic.Common;
 using DDDInPractice.Logic.SharedKernel;
 using static DDDInPractice.Logic.SharedKernel.Money;
 namespace DDDInPractice.Logic.Atms
@@ -31,11 +32,13 @@ namespace DDDInPractice.Logic.Atms
             Money output = MoneyInside.Allocate(amount);
             MoneyInside -= output;
 
-            decimal amountWithComission = CalculateAmountWithCommission(amount);
-            MoneyCharged += amountWithComission;
+            decimal amountWithCommission = CalculateAmountWithCommission(amount);
+            MoneyCharged += amountWithCommission;
+
+            AddDomainEvents(new BalanceChangedEvent(amountWithCommission));
         }
 
-        public decimal CalculateAmountWithCommission(decimal amount)
+        public virtual decimal CalculateAmountWithCommission(decimal amount)
         {
             decimal commission = amount * CommissionRate;
             decimal lessThanCent = commission % 0.01m;

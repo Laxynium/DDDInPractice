@@ -6,7 +6,7 @@ namespace DddInPractice.UI
     {
         public App()
         {
-            Inniter.Init(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=DDDInPractice;Integrated Security=True");
+            Initer.Init(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=DDDInPractice;Integrated Security=True");
         }
     }
 }

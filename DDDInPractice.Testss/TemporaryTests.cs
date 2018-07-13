@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using DDDInPractice.Logic;
+using DDDInPractice.Logic.Management;
 using DDDInPractice.Logic.SharedKernel;
 using DDDInPractice.Logic.SnackMachines;
 using DDDInPractice.Logic.Utils;
@@ -16,13 +17,17 @@ namespace DDDInPractice.Testss
         {
             SessionFactory.Init(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=DDDInPractice;Integrated Security=True");
 
-            var repository = new SnackMachineRepository();
-            SnackMachine snackMachine = repository.GetById(1);
-            snackMachine.InsertMoney(Money.Dollar);
-            snackMachine.InsertMoney(Money.Dollar);
-            snackMachine.InsertMoney(Money.Dollar);
-            snackMachine.BuySnack(1);
-            repository.Save(snackMachine);
+            HeadOfficeInstance.Init();
+
+            HeadOffice office = HeadOfficeInstance.Instance;
+
+            //var repository = new SnackMachineRepository();
+            //SnackMachine snackMachine = repository.GetById(1);
+            //snackMachine.InsertMoney(Money.Dollar);
+            //snackMachine.InsertMoney(Money.Dollar);
+            //snackMachine.InsertMoney(Money.Dollar);
+            //snackMachine.BuySnack(1);
+            //repository.Save(snackMachine);
         }
     }
 }
