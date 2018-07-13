@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.InteropServices;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
@@ -9,7 +8,7 @@ using FluentNHibernate.Conventions.Instances;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 
-namespace DDDInPractice.Logic
+namespace DDDInPractice.Logic.Utils
 {
     public static class SessionFactory
     {

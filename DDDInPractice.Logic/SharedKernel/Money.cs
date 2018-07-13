@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.Remoting.Messaging;
 
-namespace DDDInPractice.Logic
+namespace DDDInPractice.Logic.SharedKernel
 {
     public sealed class Money:ValueObject<Money>
     {

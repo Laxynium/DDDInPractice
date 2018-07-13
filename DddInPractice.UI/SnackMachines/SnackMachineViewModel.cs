@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DddInPractice.UI.Common;
-using DDDInPractice.Logic;
-using NHibernate;
+using DDDInPractice.Logic.SharedKernel;
+using DDDInPractice.Logic.SnackMachines;
 
-namespace DDDInPractice.UI
+namespace DddInPractice.UI.SnackMachines
 {
     public class SnackMachineViewModel : ViewModel
     {
@@ -44,6 +44,7 @@ namespace DDDInPractice.UI
         public SnackMachineViewModel(SnackMachine snackMachine)
         {
             _snackMachine = snackMachine;
+            _repository = new SnackMachineRepository();
 
             InsertCentCommand = new Command(() => InsertMoney(Money.Cent));
             InsertTenCentCommand = new Command(() => InsertMoney(Money.TenCent));
@@ -67,12 +68,8 @@ namespace DDDInPractice.UI
             }
 
             _snackMachine.BuySnack(position);
-            using (var session = SessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                session.SaveOrUpdate(_snackMachine);
-                transaction.Commit();
-            }
+
+           _repository.Save(_snackMachine);
 
             NotifyClient("You have bought a snack");
         }

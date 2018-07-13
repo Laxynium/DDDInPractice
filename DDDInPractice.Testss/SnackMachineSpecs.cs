@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using DDDInPractice.Logic;
+using DDDInPractice.Logic.SharedKernel;
+using DDDInPractice.Logic.SnackMachines;
 using FluentAssertions;
 using NUnit.Framework;
 

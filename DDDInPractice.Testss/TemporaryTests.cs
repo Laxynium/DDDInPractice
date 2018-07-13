@@ -1,5 +1,8 @@
 ﻿using System.Linq;
 using DDDInPractice.Logic;
+using DDDInPractice.Logic.SharedKernel;
+using DDDInPractice.Logic.SnackMachines;
+using DDDInPractice.Logic.Utils;
 using NHibernate;
 using NUnit.Framework;
 

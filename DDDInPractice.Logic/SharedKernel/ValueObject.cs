@@ -1,4 +1,4 @@
-﻿namespace DDDInPractice.Logic
+﻿namespace DDDInPractice.Logic.SharedKernel
 {
     public abstract class ValueObject<T>
         where T: ValueObject<T>

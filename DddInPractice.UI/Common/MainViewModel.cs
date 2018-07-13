@@ -1,6 +1,9 @@
 ﻿
-using DDDInPractice.Logic;
-using DDDInPractice.UI;
+using DddInPractice.UI.Atms;
+using DddInPractice.UI.SnackMachines;
+using DDDInPractice.Logic.Atms;
+using DDDInPractice.Logic.SnackMachines;
+using DDDInPractice.Logic.Utils;
 using NHibernate;
 
 namespace DddInPractice.UI.Common
@@ -9,12 +12,9 @@ namespace DddInPractice.UI.Common
     {
         public MainViewModel()
         {
-            SnackMachine snackMachine;
-            using (ISession session = SessionFactory.OpenSession())
-            {
-                snackMachine = session.Get<SnackMachine>(1L);
-            }
-            var viewModel = new SnackMachineViewModel(snackMachine);
+            var repository = new AtmRepository();
+            var atmMachine = repository.GetById(1);
+            var viewModel = new AtmViewModel(atmMachine);
             _dialogService.ShowDialog(viewModel);
         }
     }
